@@ -44,7 +44,7 @@ Nosso blog não é apenas um espaço para leitura, ele foi pensado para ser din�
 
 ## 📅 Histórico de Atualizações
 
-- **v1.0.0** – (22/09/2025)  
+- **v1.0.0** – (04/10/2025)  
   - Primeira versão estável para uso.  
   - Implementação de postagem de mensagens e ajustes de perfil.
   - Salvamento de perfil atual e mensagens postadas.
