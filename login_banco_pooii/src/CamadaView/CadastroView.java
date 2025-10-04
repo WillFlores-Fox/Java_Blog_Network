@@ -21,6 +21,8 @@ public class CadastroView extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroView.class.getName());
 
+    private char echoOriginal;
+
     Connection conexao = null;
     ResultSetMetaData rs = null;
 
@@ -55,11 +57,13 @@ public class CadastroView extends javax.swing.JFrame {
         Image img = icon.getImage().getScaledInstance(back2.getWidth(), back2.getHeight(), Image.SCALE_SMOOTH);
         back2.setIcon(new ImageIcon(img));
         back2.setText("");
+        
+        echoOriginal = senhatxt.getEchoChar();
     }
-    
+
     private void limparCampos() {
         usuario2.setText("");
-        senha2.setText("");
+        senhatxt.setText("");
         nome.setText("");
     }
 
@@ -84,9 +88,10 @@ public class CadastroView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         usuario2 = new javax.swing.JTextField();
-        senha2 = new javax.swing.JTextField();
         nome = new javax.swing.JTextField();
         cadastrar = new javax.swing.JButton();
+        mostrar = new javax.swing.JToggleButton();
+        senhatxt = new javax.swing.JPasswordField();
         back2 = new javax.swing.JLabel();
 
         Icone.setText("Icone");
@@ -99,7 +104,7 @@ public class CadastroView extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Login.setBackground(new java.awt.Color(0, 0, 0));
+        Login.setBackground(new java.awt.Color(51, 51, 51));
         Login.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         Login.setForeground(new java.awt.Color(255, 255, 255));
         Login.setText("Login");
@@ -117,7 +122,7 @@ public class CadastroView extends javax.swing.JFrame {
         Icone2.setForeground(new java.awt.Color(255, 255, 255));
         Icone2.setText("jLabel2");
 
-        conexaotxt2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        conexaotxt2.setFont(new java.awt.Font("sansserif", 1, 10)); // NOI18N
         conexaotxt2.setForeground(new java.awt.Color(255, 255, 255));
         conexaotxt2.setText("jLabel3");
 
@@ -128,23 +133,26 @@ public class CadastroView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(conexaotxt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Icone2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Login, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(conexaotxt2)
+                                    .addComponent(Icone2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Icone2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
+                .addComponent(Icone2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(conexaotxt2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Login)
@@ -156,24 +164,24 @@ public class CadastroView extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nome:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 143, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Usuario:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 191, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Senha:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 249, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cadastro:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 45, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        usuario2.setBackground(new java.awt.Color(0, 0, 0));
+        usuario2.setBackground(new java.awt.Color(51, 51, 51));
         usuario2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         usuario2.setForeground(new java.awt.Color(255, 255, 255));
         usuario2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -182,20 +190,9 @@ public class CadastroView extends javax.swing.JFrame {
                 usuario2ActionPerformed(evt);
             }
         });
-        getContentPane().add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 181, 240, 40));
+        getContentPane().add(usuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 240, 40));
 
-        senha2.setBackground(new java.awt.Color(0, 0, 0));
-        senha2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        senha2.setForeground(new java.awt.Color(255, 255, 255));
-        senha2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        senha2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senha2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(senha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 239, 240, 40));
-
-        nome.setBackground(new java.awt.Color(0, 0, 0));
+        nome.setBackground(new java.awt.Color(51, 51, 51));
         nome.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         nome.setForeground(new java.awt.Color(255, 255, 255));
         nome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -204,9 +201,9 @@ public class CadastroView extends javax.swing.JFrame {
                 nomeActionPerformed(evt);
             }
         });
-        getContentPane().add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 123, 240, 40));
+        getContentPane().add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 240, 40));
 
-        cadastrar.setBackground(new java.awt.Color(0, 0, 0));
+        cadastrar.setBackground(new java.awt.Color(51, 51, 51));
         cadastrar.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         cadastrar.setText("Cadastrar");
@@ -216,7 +213,23 @@ public class CadastroView extends javax.swing.JFrame {
                 cadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 120, 40));
+        getContentPane().add(cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 120, 40));
+
+        mostrar.setBackground(new java.awt.Color(51, 51, 51));
+        mostrar.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        mostrar.setForeground(new java.awt.Color(255, 255, 255));
+        mostrar.setText("Mostrar");
+        mostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
+
+        senhatxt.setBackground(new java.awt.Color(51, 51, 51));
+        senhatxt.setForeground(new java.awt.Color(255, 255, 255));
+        senhatxt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(senhatxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 214, 240, 40));
 
         back2.setText("back2");
         getContentPane().add(back2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 400));
@@ -241,10 +254,6 @@ public class CadastroView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usuario2ActionPerformed
 
-    private void senha2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senha2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senha2ActionPerformed
-
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
         login objlogindto = new login();
@@ -252,7 +261,7 @@ public class CadastroView extends javax.swing.JFrame {
         String usuario, senha, Nome;
 
         usuario = usuario2.getText();
-        senha = senha2.getText();
+        senha = senhatxt.getText();
         Nome = nome.getText();
 
         objlogindto.setUsuario(usuario);
@@ -264,12 +273,25 @@ public class CadastroView extends javax.swing.JFrame {
         limparCampos();
 
         if (objlogindao.cadastrar(objlogindto) == true) {
-            Tela_principal tela = new Tela_principal();
+            loginView tela = new loginView();
             tela.setVisible(true);
 
             this.dispose();
         }
     }//GEN-LAST:event_cadastrarActionPerformed
+
+    private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
+        // TODO add your handling code here:
+        if (mostrar.isSelected()) {
+            // botão ativo: mostrar senha
+            senhatxt.setEchoChar((char) 0);
+            mostrar.setText("Ocultar");
+        } else {
+            // botão desativado: restaurar echo original
+            senhatxt.setEchoChar(echoOriginal);
+            mostrar.setText("Mostrar");
+        }
+    }//GEN-LAST:event_mostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,8 +332,9 @@ public class CadastroView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton mostrar;
     private javax.swing.JTextField nome;
-    private javax.swing.JTextField senha2;
+    private javax.swing.JPasswordField senhatxt;
     private javax.swing.JTextField usuario2;
     // End of variables declaration//GEN-END:variables
 }

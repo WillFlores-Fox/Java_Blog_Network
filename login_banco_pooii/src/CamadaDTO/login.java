@@ -3,6 +3,7 @@ package CamadaDTO;
 public class login {
 
     private String usuario, senha, nome;
+    private int id;
 
     public login(String usuario, String senha) {
         this.usuario = usuario;
@@ -13,6 +14,13 @@ public class login {
         this.usuario = usuario;
         this.senha = senha;
         this.nome = nome;
+    }
+
+    public login(int id, String usuario, String senha, String nome) {
+        this.usuario = usuario;
+        this.senha = senha;
+        this.nome = nome;
+        this.id = id;
     }
     
     public login() {
@@ -40,5 +48,13 @@ public class login {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
